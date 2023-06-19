@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerToUI : MonoBehaviour
 {
+    [SerializeField] Transform shuffleEffectStartPos;
+
     public UnityEvent OpenDeck;
     public UnityEvent ShuffleDeck;
     public UnityEvent Esc;

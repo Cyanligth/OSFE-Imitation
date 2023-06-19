@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39d80f3e27a89c34bafe235c323746f0, type: 3}
+  m_Name: FocusData
+  m_EditorClassIdentifier: 
+  property: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a000000
+  FocusIcons:
+  - {fileID: 21300000, guid: 9077c934a26da42449d28dfdd1ff2659, type: 3}
+  - {fileID: 21300000, guid: accd087449d791e4fac36e587393509c, type: 3}
+  - {fileID: 21300000, guid: 5658a01832b99de4d970d93449fb4cf9, type: 3}
+  - {fileID: 21300000, guid: cd1ab67da4c753449812f4cf38bf0baa, type: 3}
+  - {fileID: 21300000, guid: f34c6cbd21b0fcb4f89d3221f6d2da32, type: 3}
+  - {fileID: 21300000, guid: c07bfd00b40ce614e93837400baeab42, type: 3}
+  - {fileID: 21300000, guid: cff9442d555f37643aaafea07c15a67f, type: 3}
+  - {fileID: 21300000, guid: 0dbd50d7e55badb42aaafa0be14afb3e, type: 3}
+  - {fileID: 21300000, guid: bfd1d244f6354494c90957f36dced9dc, type: 3}
+  - {fileID: 21300000, guid: ca8cce44004acde42891edddcfef837b, type: 3}
+  - {fileID: 21300000, guid: 8a2efab7e1abcd44bad7d12f157d3c06, type: 3}
+  FocusText:
+  - Increase your chance of finding a certain Brand of spell
+  - Frost, Flames, and Thunder
+  - Mana, Trinity, Money, Spellpower, other
+  - Deck and Card manipulation, Jam
+  - Light and Beam
+  - Flow, Root, and Tile destruction
+  - Turrets and structure
+  - Relocation and mobility
+  - Healing, pain, poison and fragile
+  - Shield, protection
+  - Swords, blades and kunais
