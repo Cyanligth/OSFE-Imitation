@@ -47,7 +47,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
-        job = "Shaffron";
+        job = "Saffron";
         MaxHp = 1200;
         curHp = maxHp;
         level = 1;
@@ -57,6 +57,11 @@ public class PlayerManager : MonoBehaviour
         curMana = 0;
         curExp = 0;
         maxExp = 50;
+        hand[0] = default;
+        hand[1] = default;
+        Deck = new Stack<Card>();
+        Grave = new Queue<Card>();
+
     }
 
     public void Draw(int i)
@@ -65,15 +70,19 @@ public class PlayerManager : MonoBehaviour
             hand[i] = deck.Pop();
         else
         {
-            Shuffle();
+            if (hand[0] != default && hand[1] != default)
+                hand[i] = default;
+            else
+                Shuffle();
         }
     }
     public void Shuffle()
     {
+        StartCoroutine(Shuffling(2f));
         Card[] cards = new Card[grave.Count];
-        while(grave.Count <= 0)
+        while(grave.Count > 0)
         {
-            int i = Random.Range(0, cards.Length);
+            int i = Random.Range(0, cards.Length-1);
             if (cards[i] == default)
             {
                 cards[i] = grave.Dequeue();
@@ -81,6 +90,8 @@ public class PlayerManager : MonoBehaviour
         }
         foreach(Card card in cards)
             deck.Push(card);
+        Draw(0);
+        Draw(1);
     }
     public void ShuffleHand()
     {
@@ -92,9 +103,14 @@ public class PlayerManager : MonoBehaviour
             grave.Enqueue(card);
         Shuffle();
     }
-    public void OnUseMana(float mana)
+    public bool OnUseMana(float mana)
     {
+        if(curMana < mana)
+        {
+            return false;
+        }
         curMana -= mana;
+        return true;
     }
 
     public void ChangeCardList()
@@ -105,5 +121,13 @@ public class PlayerManager : MonoBehaviour
             grave.Enqueue(card);
         }
         Shuffle();
+    }
+
+    public bool isShuffling;
+    IEnumerator Shuffling(float i)
+    {
+        isShuffling = true;
+        yield return new WaitForSeconds(i);
+        isShuffling = false;
     }
 }

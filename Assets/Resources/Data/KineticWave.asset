@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14865b9c4e002f74b9befcd394f88b42, type: 3}
+  m_Name: KineticWave
+  m_EditorClassIdentifier: 
+  rarity: 0
+  property: 6
+  icon: {fileID: 21300000, guid: 3d88fa85b44e5bc41b166a34139a6084, type: 3}
+  border: {fileID: 21300000, guid: 0d4ef06fe70ef314bba5c9a3776d983a, type: 3}
+  propertyBackground: {fileID: 21300000, guid: 436d5dba0192f194c902d5c2a1f59b71, type: 3}
+  propertyIcon: {fileID: 21300000, guid: 0dbd50d7e55badb42aaafa0be14afb3e, type: 3}
+  spell: KineticWave
+  damage: 40
+  useMana: 2
+  effectExplain: Hits 4 tiles in front, pushing enemys away. Gain 2 #00FFFFFlow.
+  toolTip: Hi! Bye!
+  castingTime: 0
+  afterDelay: 0
+  cardEffect: {fileID: 0}

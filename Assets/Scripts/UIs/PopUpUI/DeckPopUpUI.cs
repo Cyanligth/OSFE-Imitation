@@ -16,6 +16,7 @@ public class DeckPopUpUI : BaseUI
         animator = GetComponent<Animator>();
         images["Mask"].enabled = false;
         animator.SetBool("Active", false);
+        
         // buttons["DeckButton"].onClick.AddListener(() => { deckPopUpActive = !deckPopUpActive; animator.SetBool("Active", deckPopUpActive); });
     }
     public void PopUpDeck()

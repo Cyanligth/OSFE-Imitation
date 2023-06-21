@@ -13,7 +13,6 @@ public class PlayerMover : MonoBehaviour
  
     private Vector2 basePos;
     private bool isMoving;
-    private Vector2 moveDir;
 
     private enum MoveDir { Up = 1, Left, Down, Right } 
     
@@ -85,6 +84,8 @@ public class PlayerMover : MonoBehaviour
         else return;
 
         GameManager.player.PlayerPos = GameManager.Data.map[xPos, yPos];
+        GameManager.Data.playerMapXY[0] = xPos;
+        GameManager.Data.playerMapXY[1] = yPos;
         endPos = GameManager.player.PlayerPos;
         StartCoroutine(MoveCorutine(startPos, endPos));
     }

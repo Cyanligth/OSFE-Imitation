@@ -7,6 +7,7 @@ public class DataManager : MonoBehaviour
     public enum Property { None, Anima, Convergence, Doublelift, Glimmer, Hearth, Hexawan, Kinesys, Miseri, Phalanx, Slashfik }
     public bool[,] tileMap = new bool[8,4];
     public Vector2[,] map = new Vector2[8,4];
+    public int[] playerMapXY = new int[2];
     public Property curFocus1;
     public Property curFocus2;
 
@@ -15,6 +16,7 @@ public class DataManager : MonoBehaviour
         CreateMap();
         curFocus1 = Property.None;
         curFocus2 = Property.None;
+        playerMapXY[0] = 1; playerMapXY[1] = 2;
     }
 
     public Property CurFocus1 { get { return curFocus1; } set { curFocus1 = value; } }

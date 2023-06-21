@@ -18,6 +18,10 @@ public class SceneUI : BaseUI
     {
         CloseDeck?.Invoke();
     }
+    private void OnMap()
+    {
+        OpenMap?.Invoke();
+    }
     private void OnChose()
     {
 
@@ -34,7 +38,7 @@ public class SceneUI : BaseUI
     {
 
     }
-    private void OnRmoveCard()
+    private void OnRemoveCard()
     {
 
 

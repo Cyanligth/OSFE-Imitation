@@ -3,18 +3,25 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] Transform attackPos;
-    [SerializeField] Transform aimPos;
+    Vector2 aimPos;
+    public UnityEvent ShuffleDeck;
+    public UnityEvent<float> OnManaLow;
     Animator animator;
     CardList cardList;
     private void Awake()
     {
         animator = GetComponent<Animator>();
         cardList = GameManager.Resource.Load<CardList>("Data/CardList");
+    }
+    private void Start()
+    {
+        aimPos = GameManager.Data.map[GameManager.Data.playerMapXY[0] + 4, GameManager.Data.playerMapXY[1]];
     }
     private void Attack()
     {
@@ -60,16 +67,50 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnSpell1()
     {
+        aimPos = GameManager.Data.map[GameManager.Data.playerMapXY[0] + 4, GameManager.Data.playerMapXY[1]];
+        CardData data = GameManager.Resource.Load<CardData>("Thunder");
+        // if (GameManager.Player.Hand[0] == null)
+        //     return;
+        // if (!GameManager.Player.OnUseMana(GameManager.Player.Hand[0].cardData.useMana))
+        //     return;
+        if (!GameManager.Player.OnUseMana(1))
+        {
+            OnManaLow?.Invoke(1 - GameManager.Player.CurMana);
+            return;
+        }
         Attack();
-        GameManager.Player.OnUseMana(1f);
+        // 대충 카드의 공격 방식 ex)타게팅, 투사체, 범위공격, 맵 쓸기 등 을 만들고 그 타입에 따라 스위치로 가동
         // cardList.UseCard(cardList.Cards[0], aimPos);
-        Debug.Log("spell 1 use");
         // 플레이어 덱 혹은 패에서 디큐?팝? 해야함.
+        // GameManager.Player.Draw(0);
+
+        GameManager.Resource.Instantiate<GameObject>("Effect/Thunder", new Vector3(aimPos.x, aimPos.y), transform.rotation);
+        Debug.Log("spell 1 use");
     }
     private void OnSpell2() 
     {
+        aimPos = GameManager.Data.map[GameManager.Data.playerMapXY[0] + 1, GameManager.Data.playerMapXY[1]];
+        // if (GameManager.Player.Hand[1] == null)
+        //     return;
+        // if (!GameManager.Player.OnUseMana(GameManager.Player.Hand[1].cardData.useMana))
+        //     return;
+        if (!GameManager.Player.OnUseMana(2))
+        {
+            OnManaLow?.Invoke(2-GameManager.Player.CurMana);
+            return;
+        }
         Attack();
+        // GameManager.Player.Draw(1);
+        GameManager.Resource.Instantiate<GameObject>("Effect/KineticWave", new Vector3(aimPos.x, aimPos.y), transform.rotation);
         Debug.Log("spell 2 use");
+    }
+    private void OnShuffle()
+    {
+        if(!GameManager.Player.isShuffling)
+        {
+            GameManager.Player.Shuffle();
+            ShuffleDeck?.Invoke();
+        }
     }
 
     private void CreatBullet()

@@ -16,7 +16,7 @@ public class LeftUI : SceneUI
     private void Update()
     {
         // 나중에 이벤트로 연동하기
-        texts["PlayerLevel"].text = "Level " + GameManager.Player.Level.ToString();
+        texts["PlayerLevel"].text = "Lv. " + GameManager.Player.Level.ToString();
         texts["MoneyTxt"].text = GameManager.Player.Money.ToString();
         texts["LifeTxt"].text = GameManager.player.CurHp.ToString() + "/" + GameManager.Player.MaxHp.ToString();
     }
