@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
+    public enum Property { None, Anima, Convergence, Doublelift, Glimmer, Hearth, Hexawan, Kinesys, Miseri, Phalanx, Slashfik }
     public bool[,] tileMap = new bool[8,4];
     public Vector2[,] map = new Vector2[8,4];
+    public Property curFocus1;
+    public Property curFocus2;
 
     private void Awake()
     {
         CreateMap();
+        curFocus1 = Property.None;
+        curFocus2 = Property.None;
     }
+
+    public Property CurFocus1 { get { return curFocus1; } set { curFocus1 = value; } }
+    public Property CurFocus2 { get { return curFocus2; } set { curFocus2 = value; } }
 
     public void CreateMap()
     {

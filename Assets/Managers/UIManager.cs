@@ -42,7 +42,7 @@ public class UIManager : MonoBehaviour
         T ui = GameManager.Pool.GetUI(popUpUI);
         ui.transform.SetParent(popUpCanvas.transform, false);
         popUpStack.Push(ui);
-        Time.timeScale = 0;
+        // Time.timeScale = 0;
         return ui;
     }
     public T OpenPopUpUI<T>(string path) where T : PopUpUI
@@ -62,8 +62,8 @@ public class UIManager : MonoBehaviour
             PopUpUI curUI = popUpStack.Peek();
             curUI.gameObject.SetActive(true);
         }
-        if (popUpStack.Count <= 0)
-            Time.timeScale = 1;
+        // if (popUpStack.Count <= 0)
+        //     Time.timeScale = 1;
     }
 
     public void OpenWindowUI(WindowUI windowUI)

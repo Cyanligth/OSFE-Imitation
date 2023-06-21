@@ -9,7 +9,7 @@ public class ShuffleEffectGenerator : MonoBehaviour
 
     private void Awake()
     {
-        count = GameManager.Player.CardList.Count;
+        count = 6; // GameManager.Player.CardList.Count;
     }
     public void Generate()
     {

@@ -105,7 +105,7 @@ public class PlayerAttack : MonoBehaviour
         {
             Attack();
             CreatBullet();
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.15f);
         }
     }
 }

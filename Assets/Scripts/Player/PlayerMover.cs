@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class PlayerMover : MonoBehaviour
  
     private Vector2 basePos;
     private bool isMoving;
+    private Vector2 moveDir;
 
     private enum MoveDir { Up = 1, Left, Down, Right } 
     
