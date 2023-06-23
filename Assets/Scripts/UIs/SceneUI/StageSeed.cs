@@ -14,12 +14,16 @@ public class StageSeed : BaseUI
 
     private void Start()
     {
-        texts["SeedText"].text = "Seed: " + "13579284"; // 이번 맵의 시드
+        texts["SeedText"].text = "Seed: " + GameManager.Data.seed.ToString(); // 이번 맵의 시드
     }
 
-    public void StageChange()
+    public void ChangeSeed()
     {
-        texts["StageText"].text = "1"/*몇번째 월드인지*/ + " - " + "2"/*월드 내의 몇번째 스테이지*/ + "(" + "Shiso"/*스테이지 이름?*/ + ")";
+        texts["SeedText"].text = "Seed: " + GameManager.data.seed.ToString();
+    }
+    public void ChangeStage()
+    {
+        texts["StageText"].text = "1"/*몇번째 월드인지*/ + " - " + "2"/*월드 내의 몇번째 스테이지*/ + "(" + "Shiso"/*월드 이름*/ + ")";
     }
 
     private bool isMapOpen;

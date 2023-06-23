@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 
-
+namespace test
+{
     public class RandomMap : MonoBehaviour
     {
         [SerializeField] private Vector2Int mapSize;
@@ -121,19 +122,20 @@ using UnityEngine.Tilemaps;
         }
     }
 
-public class TreeNode
-{
-    public TreeNode leftTree;
-    public TreeNode rightTree;
-    public TreeNode parentTree;
-    public RectInt treeSize;
-    public RectInt dungeonSize;
-
-    public TreeNode(int x, int y, int width, int height)
+    public class TreeNode
     {
-        treeSize.x = x;
-        treeSize.y = y;
-        treeSize.width = width;
-        treeSize.height = height;
+        public TreeNode leftTree;
+        public TreeNode rightTree;
+        public TreeNode parentTree;
+        public RectInt treeSize;
+        public RectInt dungeonSize;
+
+        public TreeNode(int x, int y, int width, int height)
+        {
+            treeSize.x = x;
+            treeSize.y = y;
+            treeSize.width = width;
+            treeSize.height = height;
+        }
     }
 }

@@ -21,7 +21,7 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Start()
     {
-        aimPos = GameManager.Data.map[GameManager.Data.playerMapXY[0] + 4, GameManager.Data.playerMapXY[1]];
+        aimPos = GameManager.Data.map[GameManager.Data.playerXPos + 4, GameManager.Data.playerYPos];
     }
     private void Attack()
     {
@@ -67,7 +67,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnSpell1()
     {
-        aimPos = GameManager.Data.map[GameManager.Data.playerMapXY[0] + 4, GameManager.Data.playerMapXY[1]];
+        aimPos = GameManager.Data.map[GameManager.Data.playerXPos + 4, GameManager.Data.playerYPos];
         CardData data = GameManager.Resource.Load<CardData>("Thunder");
         // if (GameManager.Player.Hand[0] == null)
         //     return;
@@ -89,7 +89,7 @@ public class PlayerAttack : MonoBehaviour
     }
     private void OnSpell2() 
     {
-        aimPos = GameManager.Data.map[GameManager.Data.playerMapXY[0] + 1, GameManager.Data.playerMapXY[1]];
+        aimPos = GameManager.Data.map[GameManager.Data.playerXPos + 1, GameManager.Data.playerYPos];
         // if (GameManager.Player.Hand[1] == null)
         //     return;
         // if (!GameManager.Player.OnUseMana(GameManager.Player.Hand[1].cardData.useMana))

@@ -1,22 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
+    public int seed;
+
     public enum Property { None, Anima, Convergence, Doublelift, Glimmer, Hearth, Hexawan, Kinesys, Miseri, Phalanx, Slashfik }
+    public enum World { Fire, Forest, Ice, Ruins, Wasteland, Count, Eden = 10 }
+    
     public bool[,] tileMap = new bool[8,4];
     public Vector2[,] map = new Vector2[8,4];
-    public int[] playerMapXY = new int[2];
+    public int playerXPos;
+    public int playerYPos;
     public Property curFocus1;
     public Property curFocus2;
+    public World curWorld;
 
     private void Awake()
     {
         CreateMap();
         curFocus1 = Property.None;
         curFocus2 = Property.None;
-        playerMapXY[0] = 1; playerMapXY[1] = 2;
+        playerXPos = 1; 
+        playerYPos = 2;
     }
 
     public Property CurFocus1 { get { return curFocus1; } set { curFocus1 = value; } }

@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abcf223d6d71ebe4d8f6ba4a8fffc9f0, type: 3}
+  m_Name: MapData
+  m_EditorClassIdentifier: 
+  maps:
+  - world: 0
+    worldIcon: {fileID: 21300000, guid: 8d9153331fa45574096c7926807f0549, type: 3}
+  - world: 1
+    worldIcon: {fileID: 21300000, guid: 0c10ca2287bf56a43a809832ee471286, type: 3}
+  - world: 2
+    worldIcon: {fileID: 21300000, guid: 42c8571b14bd39f4c88c80fd5616ffc4, type: 3}
+  - world: 3
+    worldIcon: {fileID: 21300000, guid: 14d9e6905fafc6142a0caf3eb8044b8e, type: 3}
+  - world: 4
+    worldIcon: {fileID: 21300000, guid: bd4cb928293dec34ba8005a20aede537, type: 3}
+  - world: 10
+    worldIcon: {fileID: 21300000, guid: 4f9ac5b583c197249b19925c32fdb26b, type: 3}
+  rooms:
+  - room: 0
+    roomIcon: {fileID: 21300000, guid: 18ade0e8808b5964881bde4c715c15cb, type: 3}
+  - room: 1
+    roomIcon: {fileID: 21300000, guid: c5e0cff6a0a5fd848854b0dbe85c63a6, type: 3}
+  - room: 2
+    roomIcon: {fileID: 21300000, guid: 9066dcc20220c714eafffb3091daf875, type: 3}
+  - room: 3
+    roomIcon: {fileID: 21300000, guid: 5b08ef98c3c8a324997d6a486f62ec6b, type: 3}
+  - room: 4
+    roomIcon: {fileID: 21300000, guid: 340fe9f52096d884a8de5efffa63f076, type: 3}
+  - room: 5
+    roomIcon: {fileID: 21300000, guid: 5347bca0e2c06774ab04f5c7e2eb2958, type: 3}
+  - room: 6
+    roomIcon: {fileID: 21300000, guid: 284e64c45860de34abd47841e12d5387, type: 3}
+  - room: 7
+    roomIcon: {fileID: 0}
+  - room: 8
+    roomIcon: {fileID: 21300000, guid: 69be0bf018101d54fa0c3583d47e3fd4, type: 3}
+  - room: 9
+    roomIcon: {fileID: 21300000, guid: 7de66ae6e956d374186570b583ef22a5, type: 3}

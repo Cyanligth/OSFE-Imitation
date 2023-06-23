@@ -9,6 +9,7 @@ public class PlayerToUI : MonoBehaviour
     public UnityEvent OpenDeck;
     public UnityEvent Esc;
     public UnityEvent Map;
+    public UnityEvent Test;
 
     private void OnDeck()
     {
@@ -21,5 +22,9 @@ public class PlayerToUI : MonoBehaviour
     private void OnMap()
     {
         Map?.Invoke();
+    }
+    private void OnTest()
+    {
+        Test?.Invoke();
     }
 }

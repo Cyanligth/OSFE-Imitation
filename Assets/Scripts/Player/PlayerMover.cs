@@ -84,8 +84,8 @@ public class PlayerMover : MonoBehaviour
         else return;
 
         GameManager.player.PlayerPos = GameManager.Data.map[xPos, yPos];
-        GameManager.Data.playerMapXY[0] = xPos;
-        GameManager.Data.playerMapXY[1] = yPos;
+        GameManager.Data.playerXPos = xPos;
+        GameManager.Data.playerYPos = yPos;
         endPos = GameManager.player.PlayerPos;
         StartCoroutine(MoveCorutine(startPos, endPos));
     }
