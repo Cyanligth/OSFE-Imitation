@@ -6,38 +6,42 @@ using UnityEngine.Events;
 
 public class PlayerManager : MonoBehaviour
 {
-    protected uint level;
-    protected uint maxExp;
-    protected uint curExp;
+    protected int level;
+    protected int maxExp;
+    protected int curExp;
     protected string job;
     protected string weapon;
-    protected uint maxHp;
-    protected uint curHp;
-    protected uint atk;
-    protected uint def;
-    protected uint shild;
+    protected int maxHp;
+    protected int curHp;
+    protected int atk;
+    protected int matk;
+    protected int luck;
+    protected int shield;
     protected float maxMana;
     protected float curMana;
     protected float manaRegen;
-    protected uint money;
+    protected int money;
     protected Stack<Card> deck;
     protected Queue<Card> grave;
     protected Card[] hand = new Card[2];
     protected List<Card> cardList;
     protected Vector2 playerPos;
 
-    public uint Level { get { return level; } protected set { level = value; } }
-    public uint MaxExp { get { return maxExp; } protected set { maxExp = value; } }
-    public uint CurExp { get { return curExp; } set { curExp = value; } }
+    public int Level { get { return level; } protected set { level = value; } }
+    public int MaxExp { get { return maxExp; } protected set { maxExp = value; } }
+    public int CurExp { get { return curExp; } set { curExp = value; } }
     public string Job { get { return job; } protected set { job = value; } }
     public string Weapon { get { return weapon; } protected set { weapon = value; } }
-    public uint MaxHp { get { return maxHp; } protected set { maxHp = value; } }
-    public uint CurHp { get { return curHp; } set { curHp = value; } }
-
+    public int MaxHp { get { return maxHp; } protected set { maxHp = value; } }
+    public int CurHp { get { return curHp; } set { curHp = value; } }
+    public int Atk { get { return atk; } set { atk = value; } }
+    public int Matk { get { return matk; } set { matk = value; } }
+    public int Luck { get { return luck; } set { luck = value; } }
+    public int Shield { get { return shield; } set { shield = value; } }
     public float MaxMana { get { return maxMana; } protected set { maxMana = value; } }
     public float CurMana { get { return curMana; } set { curMana = value; } }
     public float ManaRegen { get { return manaRegen; } protected set { manaRegen = value; } }
-    public uint Money { get { return money; } set { money = value; } }
+    public int Money { get { return money; } set { money = value; } }
 
     public Vector2 PlayerPos { get { return playerPos; } set { playerPos = value; } }
     public Stack<Card> Deck { get { return deck; } set { deck = value; } }
@@ -129,5 +133,20 @@ public class PlayerManager : MonoBehaviour
         isShuffling = true;
         yield return new WaitForSeconds(i);
         isShuffling = false;
+    }
+    public void Hit(int damage)
+    {
+        if (shield > 0)
+            shield -= damage;
+        else CurHp -= damage;
+
+        if (shield < 0)
+            curHp += shield;
+    }
+    public void Heal(int heal)
+    {
+        curHp += heal;
+        if(curHp > maxHp)
+            curHp = maxHp;
     }
 }

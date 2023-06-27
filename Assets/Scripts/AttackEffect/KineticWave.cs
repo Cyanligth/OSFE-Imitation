@@ -15,7 +15,7 @@ public class KineticWave : MonoBehaviour
         {
             count++;
             yield return new WaitForSeconds(0.25f);
-            GameManager.Resource.Instantiate<GameObject>("Effect/KineticWaveClone", new Vector3(transform.position.x + (1.6f * count), transform.position.y), transform.rotation);
+            GameManager.Resource.Instantiate<GameObject>("Effect/Card/KineticWaveClone", new Vector3(transform.position.x + (1.6f * count), transform.position.y), transform.rotation);
         }
         yield return null;
         GameManager.Resource.Destroy(gameObject);

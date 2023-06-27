@@ -14,10 +14,12 @@ public class PlayerAttack : MonoBehaviour
     public UnityEvent<float> OnManaLow;
     Animator animator;
     CardList cardList;
+    AttackRoutineData attackData;
     private void Awake()
     {
         animator = GetComponent<Animator>();
         cardList = GameManager.Resource.Load<CardList>("Data/CardList");
+        attackData = GameManager.Resource.Load<AttackRoutineData>("Data/AttackRoutineData");
     }
     private void Start()
     {
@@ -68,7 +70,7 @@ public class PlayerAttack : MonoBehaviour
     private void OnSpell1()
     {
         aimPos = GameManager.Data.map[GameManager.Data.playerXPos + 4, GameManager.Data.playerYPos];
-        CardData data = GameManager.Resource.Load<CardData>("Thunder");
+        CardData data = GameManager.Resource.Load<CardData>("Data/Card/Thunder");
         // if (GameManager.Player.Hand[0] == null)
         //     return;
         // if (!GameManager.Player.OnUseMana(GameManager.Player.Hand[0].cardData.useMana))
@@ -84,7 +86,7 @@ public class PlayerAttack : MonoBehaviour
         // 플레이어 덱 혹은 패에서 디큐?팝? 해야함.
         // GameManager.Player.Draw(0);
 
-        GameManager.Resource.Instantiate<GameObject>("Effect/Thunder", new Vector3(aimPos.x, aimPos.y), transform.rotation);
+        GameManager.Resource.Instantiate<GameObject>("Effect/Card/Thunder", new Vector3(aimPos.x, aimPos.y), transform.rotation);
         Debug.Log("spell 1 use");
     }
     private void OnSpell2() 
@@ -101,7 +103,7 @@ public class PlayerAttack : MonoBehaviour
         }
         Attack();
         // GameManager.Player.Draw(1);
-        GameManager.Resource.Instantiate<GameObject>("Effect/KineticWave", new Vector3(aimPos.x, aimPos.y), transform.rotation);
+        GameManager.Resource.Instantiate<GameObject>("Effect/Card/KineticWave", new Vector3(aimPos.x, aimPos.y), transform.rotation);
         Debug.Log("spell 2 use");
     }
     private void OnShuffle()
@@ -116,7 +118,7 @@ public class PlayerAttack : MonoBehaviour
     private void CreatBullet()
     {
         GameManager.Resource.Instantiate<BasicCast>("Effect/BasicCast", attackPos.position, attackPos.rotation);
-        GameManager.Resource.Instantiate<BasicSpell>("Effect/BasicSpell", attackPos.position, attackPos.rotation); 
+        GameManager.Resource.Instantiate<BasicSpell>("Effect/BasicSpell", attackPos.position, attackPos.rotation);
     }
 
     IEnumerator Attack1Counting()

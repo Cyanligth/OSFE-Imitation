@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMover : MonoBehaviour
+public class PlayerMover : MonoBehaviour, IHittable
 {
     [SerializeField] float moveSpeed;
     [SerializeField] private int xPos;
@@ -103,5 +103,15 @@ public class PlayerMover : MonoBehaviour
         }
         isMoving = false;
         animator.SetInteger("Move", 0);
+    }
+
+    public void Hit(int damage)
+    {
+        GameManager.Player.Hit(damage);
+        animator.SetTrigger("Hit");
+        if(GameManager.Player.CurHp < 0)
+        {
+            animator.SetBool("Die", true);
+        }
     }
 }

@@ -10,6 +10,7 @@ public class Card : MonoBehaviour
     public CardData cardData;
     protected Dictionary<string, TMP_Text> texts;
     protected Dictionary<string, Image> images;
+    protected AttackRoutineData atkData;
     protected virtual void Awake()
     {
         BindChildren();

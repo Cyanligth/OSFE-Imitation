@@ -164,13 +164,13 @@ public class RandomMapGenerator : Maps
     // 예정경로 바뀔때마다 원래색으로 돌리는것도 실행해주기 
     public void StartDrawLinkedLine()
     {
-        DrawLinkedLine(curNode, 0);
+        // DrawLinkedLine(curNode, 0);
     }
     public void DrawLinkedLine(Node node, int n)
     {
         if (n >= nodeList.Count)
             return;
-        node.lineRenderer.SetColors(Color.green, Color.green);
+        // node.lineRenderer.SetColors(Color.gray, Color.green);
         node.DrawLine();
         foreach(Node linked in node.nextRoom)
         {
@@ -183,7 +183,7 @@ public class RandomMapGenerator : Maps
     {
         if (n >= nodeList.Count)
             return;
-        node.lineRenderer.SetColors(Color.white, Color.white);
+        // node.lineRenderer.SetColors(Color.white, Color.white);
         node.DrawLine();
         foreach (Node linked in node.nextRoom)
         {
