@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,12 +11,17 @@ public class PlayerMover : MonoBehaviour, IHittable
     [SerializeField] private int xPos;
     [SerializeField] private int yPos;
     [SerializeField] Animator animator;
+    [SerializeField] Transform effectPos;
  
     private Vector2 basePos;
     private bool isMoving;
 
     private enum MoveDir { Up = 1, Left, Down, Right } 
     
+    public Transform EffectPos { get { return effectPos; } }
+    public int XPos { get { return xPos; } }
+    public int YPos { get { return yPos; } }
+
     private void Awake()
     {
         basePos = GameManager.Data.map[xPos, yPos];
@@ -30,6 +36,8 @@ public class PlayerMover : MonoBehaviour, IHittable
 
     private void Update()
     {
+        if (GameManager.Player.anchor)
+            return;
         Move();
     }
 
@@ -44,7 +52,7 @@ public class PlayerMover : MonoBehaviour, IHittable
         if(Input.GetKeyDown(KeyCode.UpArrow) && yPos > 0)
         {
             yPos--;
-            if (!GameManager.data.tileMap[xPos, yPos])
+            if (!GameManager.data.boolMap[xPos, yPos])
             {
                 yPos++;
                 return;
@@ -54,7 +62,7 @@ public class PlayerMover : MonoBehaviour, IHittable
         else if (Input.GetKeyDown(KeyCode.DownArrow) && yPos < 3)
         {
             yPos++;
-            if (!GameManager.data.tileMap[xPos, yPos])
+            if (!GameManager.data.boolMap[xPos, yPos])
             {
                 yPos--;
                 return;
@@ -64,7 +72,7 @@ public class PlayerMover : MonoBehaviour, IHittable
         else if (Input.GetKeyDown(KeyCode.RightArrow) && xPos < 3)
         {
             xPos++;
-            if (!GameManager.data.tileMap[xPos, yPos])
+            if (!GameManager.data.boolMap[xPos, yPos])
             {
                 xPos--;
                 return;
@@ -74,7 +82,7 @@ public class PlayerMover : MonoBehaviour, IHittable
         else if (Input.GetKeyDown(KeyCode.LeftArrow) && xPos > 0)
         {
             xPos--;
-            if (!GameManager.data.tileMap[xPos, yPos])
+            if (!GameManager.data.boolMap[xPos, yPos])
             {
                 xPos++;
                 return;
@@ -90,7 +98,7 @@ public class PlayerMover : MonoBehaviour, IHittable
         StartCoroutine(MoveCorutine(startPos, endPos));
     }
 
-    IEnumerator MoveCorutine(Vector2 startPos, Vector2 endPos)
+    public IEnumerator MoveCorutine(Vector2 startPos, Vector2 endPos)
     {
         isMoving = true;
         float totalTime = Vector2.Distance(startPos, endPos) / moveSpeed;
@@ -104,7 +112,28 @@ public class PlayerMover : MonoBehaviour, IHittable
         isMoving = false;
         animator.SetInteger("Move", 0);
     }
-
+    public IEnumerator MoveCorutine(Vector2 startPos, Vector2 endPos, float speed)
+    {
+        isMoving = true;
+        float rate = 0;
+        while (rate < 1)
+        {
+            transform.position = Vector3.Lerp(startPos, endPos, rate);
+            rate += Time.deltaTime * speed;
+            yield return null;
+        }
+        isMoving = false;
+    }
+    public void OnNextStage(float time)
+    {
+        StartCoroutine(NextStageRoutine(time));
+    }
+    IEnumerator NextStageRoutine(float time)
+    {
+        animator.SetBool("NextNode", true);
+        yield return new WaitForSeconds(time);
+        animator.SetBool("NextNode", false);
+    }
     public void Hit(int damage)
     {
         GameManager.Player.Hit(damage);

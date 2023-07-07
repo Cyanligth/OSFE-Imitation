@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class ShuffleEffectGenerator : MonoBehaviour
 {
-    [SerializeField] int count;
+    int count;
     private Vector3[] effTargetPos;
 
-    private void Awake()
+    private void Start()
     {
-        count = 6; // GameManager.Player.CardList.Count;
+        count = GameManager.Player.CardList.Count;
     }
     public void Generate()
     {
+        count = GameManager.Player.CardList.Count;
         effTargetPos = new Vector3[count];
         effTargetPos[0] = new Vector3(-5.8f, -4);
         effTargetPos[1] = new Vector3(-4.6f, -4);

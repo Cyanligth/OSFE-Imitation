@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour
 {
     private EventSystem eventSystem;
     private Canvas popUpCanvas;
-    private Stack<PopUpUI> popUpStack;
+    public Stack<PopUpUI> popUpStack;
     private Canvas windowCanvas;
     private Canvas inGameCanvas;
 
@@ -34,11 +34,6 @@ public class UIManager : MonoBehaviour
 
     public T OpenPopUpUI<T>(T popUpUI) where T : PopUpUI
     {
-        if (popUpStack.Count > 0)
-        {
-            PopUpUI prevUI = popUpStack.Peek();
-            prevUI.gameObject.SetActive(false);
-        }
         T ui = GameManager.Pool.GetUI(popUpUI);
         ui.transform.SetParent(popUpCanvas.transform, false);
         popUpStack.Push(ui);

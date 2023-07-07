@@ -36,19 +36,20 @@ public class Card : MonoBehaviour
 
     public void AddCard()
     {
-        GameManager.Player.CardList.Add(this);
+        GameManager.Player.CardList.Add(this.cardData);
     }
     public void RemoveCard()
     {
-        GameManager.Player.CardList.Remove(this);
+        GameManager.Player.CardList.Remove(this.cardData);
     }
-    public void UseCard(int i, Transform effectPos, Transform targetPos)   // i = 손패의 위치
+    public void UseCard(int i)   // i = 손패의 위치
     {
         if (GameManager.Player.CurMana < cardData.useMana)
             return;
         GameManager.Player.OnUseMana(cardData.useMana);
+        GameManager.Resource.Instantiate<GameObject>(cardData.cardEffect);
         // 카드 사용
-        GameManager.Player.Grave.Enqueue(this);
+        GameManager.Player.Grave.Enqueue(this.cardData);
         GameManager.Player.Draw(i);
     }
 

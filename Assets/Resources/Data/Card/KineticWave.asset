@@ -18,11 +18,11 @@ MonoBehaviour:
   border: {fileID: 21300000, guid: 0d4ef06fe70ef314bba5c9a3776d983a, type: 3}
   propertyBackground: {fileID: 21300000, guid: 436d5dba0192f194c902d5c2a1f59b71, type: 3}
   propertyIcon: {fileID: 21300000, guid: 0dbd50d7e55badb42aaafa0be14afb3e, type: 3}
-  spell: KineticWave
+  spell: Kinetic Wave
   damage: 40
   useMana: 2
   effectExplain: Hits 4 tiles in front, pushing enemys away. Gain 2 #00FFFFFlow.
   toolTip: Hi! Bye!
   castingTime: 0
   afterDelay: 0
-  cardEffect: {fileID: 0}
+  cardEffect: {fileID: 4590215850949582821, guid: 5dc835353df709a48918e3fe16a27955, type: 3}

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14865b9c4e002f74b9befcd394f88b42, type: 3}
+  m_Name: StepSlash
+  m_EditorClassIdentifier: 
+  rarity: 1
+  property: 9
+  icon: {fileID: 21300000, guid: 2de2475ff6761b640a496bad75b727f1, type: 3}
+  border: {fileID: 21300000, guid: 4547450f0a00102478a8cc41d31dbac6, type: 3}
+  propertyBackground: {fileID: 21300000, guid: bc04d1b388592004295305723eb56e24, type: 3}
+  propertyIcon: {fileID: 21300000, guid: 8a2efab7e1abcd44bad7d12f157d3c06, type: 3}
+  spell: Step Slash
+  damage: 80
+  useMana: 2
+  effectExplain: 
+  toolTip: 
+  castingTime: 0
+  afterDelay: 0
+  cardEffect: {fileID: 353389582034535129, guid: 4e3d0d0bcdf751b489d1aa57c46606a0, type: 3}

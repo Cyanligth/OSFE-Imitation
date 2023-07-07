@@ -16,7 +16,7 @@ public class TurretLaser : BaseEnemy
     protected override void Start()
     {
         base.Start();
-        SetPosition(6, 3);
+        // SetStartPosition(6, 3);
     }
     protected override void Update()
     {
@@ -25,7 +25,7 @@ public class TurretLaser : BaseEnemy
     public void OnAttack()
     {
         GameManager.Resource.Instantiate<Laser>("Effect/Enemy/BeamLaser", attackPoint.position, attackPoint.rotation);
-        attackRoutineData.BeamAttack(xPos, yPos, atk, LayerMask.GetMask("Player"));
+        attackRoutineData.BeamAttack(xPos, yPos, atk, mask);
     }
 
     protected override void AttackState()

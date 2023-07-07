@@ -6,17 +6,21 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class PlayerAttack : MonoBehaviour
+public class PlayerAttack : MonoBehaviour, ISpellEventListener
 {
     [SerializeField] Transform attackPos;
     Vector2 aimPos;
     public UnityEvent ShuffleDeck;
     public UnityEvent<float> OnManaLow;
+    public UnityEvent IsSuffling;
+    public UnityEvent<CardData> UseCard;
     Animator animator;
     CardList cardList;
     AttackRoutineData attackData;
+    EventMaster master;
     private void Awake()
     {
+        master = GameManager.Resource.Load<EventMaster>("Data/EventMaster");
         animator = GetComponent<Animator>();
         cardList = GameManager.Resource.Load<CardList>("Data/CardList");
         attackData = GameManager.Resource.Load<AttackRoutineData>("Data/AttackRoutineData");
@@ -24,6 +28,15 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         aimPos = GameManager.Data.map[GameManager.Data.playerXPos + 4, GameManager.Data.playerYPos];
+        
+    }
+    private void OnEnable()
+    {
+        master.AddSpellEventListener(this);
+    }
+    private void OnDisable()
+    {
+        master.RemoveSpellEventListener(this);
     }
     private void Attack()
     {
@@ -50,7 +63,6 @@ public class PlayerAttack : MonoBehaviour
         if (ccc % 2 != 0)
         {
             StartCoroutine(Rapid());
-            Debug.Log("rapid");
         }
         else
         {
@@ -62,56 +74,67 @@ public class PlayerAttack : MonoBehaviour
             animator.SetBool("Attack1", false);
             animator.SetBool("Attack2", false);
             animator.SetBool("Attack3", false);
-            Debug.Log("end");
         }
     }
     private int ccc = 0;
 
     private void OnSpell1()
     {
-        aimPos = GameManager.Data.map[GameManager.Data.playerXPos + 4, GameManager.Data.playerYPos];
-        CardData data = GameManager.Resource.Load<CardData>("Data/Card/Thunder");
-        // if (GameManager.Player.Hand[0] == null)
-        //     return;
-        // if (!GameManager.Player.OnUseMana(GameManager.Player.Hand[0].cardData.useMana))
-        //     return;
-        if (!GameManager.Player.OnUseMana(1))
+        if (GameManager.Player.Hand[0] == null && GameManager.Player.Hand[1] == null)
         {
-            OnManaLow?.Invoke(1 - GameManager.Player.CurMana);
+            GameManager.Player.Shuffle();
+            return;
+        }
+        if (GameManager.Player.Hand[0] == default)
+        {
+            OnSpell2();
+            return;
+        }
+        if (!GameManager.Player.OnUseMana(GameManager.Player.Hand[0].useMana))
+        {
+            OnManaLow?.Invoke(GameManager.Player.Hand[0].useMana - GameManager.Player.CurMana);
             return;
         }
         Attack();
-        // 대충 카드의 공격 방식 ex)타게팅, 투사체, 범위공격, 맵 쓸기 등 을 만들고 그 타입에 따라 스위치로 가동
-        // cardList.UseCard(cardList.Cards[0], aimPos);
-        // 플레이어 덱 혹은 패에서 디큐?팝? 해야함.
-        // GameManager.Player.Draw(0);
-
-        GameManager.Resource.Instantiate<GameObject>("Effect/Card/Thunder", new Vector3(aimPos.x, aimPos.y), transform.rotation);
+        GameManager.Resource.Instantiate<GameObject>(GameManager.Player.Hand[0].cardEffect);
+        GameManager.Player.Grave.Enqueue(GameManager.Player.Hand[0]);
+        GameManager.Player.Draw(0);
+        master.Hand1UseInvoke();
         Debug.Log("spell 1 use");
     }
     private void OnSpell2() 
     {
-        aimPos = GameManager.Data.map[GameManager.Data.playerXPos + 1, GameManager.Data.playerYPos];
-        // if (GameManager.Player.Hand[1] == null)
-        //     return;
-        // if (!GameManager.Player.OnUseMana(GameManager.Player.Hand[1].cardData.useMana))
-        //     return;
-        if (!GameManager.Player.OnUseMana(2))
+        if (GameManager.Player.Hand[0] == default && GameManager.Player.Hand[1] == default)
         {
-            OnManaLow?.Invoke(2-GameManager.Player.CurMana);
+            GameManager.Player.Shuffle();
+            return;
+        }
+        if (GameManager.Player.Hand[1] == default)
+        {
+            OnSpell1();
+            return;
+        }
+        if (!GameManager.Player.OnUseMana(GameManager.Player.Hand[1].useMana))
+        {
+            OnManaLow?.Invoke(GameManager.Player.Hand[1].useMana - GameManager.Player.CurMana);
             return;
         }
         Attack();
-        // GameManager.Player.Draw(1);
-        GameManager.Resource.Instantiate<GameObject>("Effect/Card/KineticWave", new Vector3(aimPos.x, aimPos.y), transform.rotation);
+        GameManager.Resource.Instantiate<GameObject>(GameManager.Player.Hand[1].cardEffect);
+        GameManager.Player.Grave.Enqueue(GameManager.Player.Hand[1]);
+        GameManager.Player.Draw(1);
+        master.Hand2UseInvoke();
         Debug.Log("spell 2 use");
     }
     private void OnShuffle()
     {
         if(!GameManager.Player.isShuffling)
         {
-            GameManager.Player.Shuffle();
-            ShuffleDeck?.Invoke();
+            GameManager.Player.ShuffleHand();
+        }
+        else
+        {
+            IsSuffling?.Invoke();
         }
     }
 
@@ -150,5 +173,28 @@ public class PlayerAttack : MonoBehaviour
             CreatBullet();
             yield return new WaitForSeconds(0.15f);
         }
+    }
+
+    public void Hand1UseEvent()
+    {
+        
+    }
+
+    public void Hand2UseEvent()
+    {
+        
+    }
+
+    public void ShuffleEvent()
+    {
+        ShuffleDeck.Invoke();
+    }
+
+    public void GetNewCardEvent(CardData card)
+    {
+    }
+
+    public void DeleteCardEvent(CardData card)
+    {
     }
 }

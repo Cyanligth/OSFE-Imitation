@@ -9,16 +9,20 @@ public class Tiles : MonoBehaviour
     TileData tileData;
     protected Dictionary<string, Transform> transforms;
     protected Dictionary<string, SpriteRenderer> sprites;
+    int curTile;
+    bool isChanging;
 
     private void Awake()
     {
         BindChildren();
         tileData = GameManager.Resource.Load<TileData>("Data/TileData");
+        curTile = 0;
     }
 
     public void SetTile(int tile)
     {
         sprites["State"].sprite = tileData.tileImg[tile];
+        curTile = tile;
     }
     public void SetBorder(int border)
     {
@@ -26,17 +30,27 @@ public class Tiles : MonoBehaviour
     }
     public void SetTileRoutine(int tile, float time)
     {
+        if (curTile == 3 && tile == 1)
+            return;
         StartCoroutine(TileChanging(tile, time));
     }
     public void SetTileRoutine(int tile, float time, int endTile)
-    {
+    {   if (isChanging) return;
         StartCoroutine(TileChanging(tile, time, endTile));
     }
-    IEnumerator TileChanging(int tile, float time)
+    public IEnumerator TileChanging(int tile, float time)
     {
+        isChanging = true;
+        TileData.Tile pastTile = (TileData.Tile)curTile;
         SetTile(tile);
         yield return new WaitForSeconds(time);
-        SetTile(0);
+        SetTile((int)pastTile);
+        isChanging = false;
+        if(curTile == 1)
+        {
+            SetTile(0);
+            curTile = 0;
+        }
     }
     IEnumerator TileChanging(int tile, float time, int endTile)
     {

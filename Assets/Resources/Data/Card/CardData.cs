@@ -25,4 +25,15 @@ public class CardData : ScriptableObject
     public float castingTime;
     public float afterDelay;
     public GameObject cardEffect;
+
+    public void UseCard(int i)
+    {
+        if (GameManager.Player.CurMana < useMana)
+            return;
+        GameManager.Player.OnUseMana(useMana);
+        GameManager.Resource.Instantiate<GameObject>(cardEffect);
+        // 카드 사용
+        GameManager.Player.Grave.Enqueue(this);
+        GameManager.Player.Draw(i);
+    }
 }

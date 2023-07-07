@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Node : MonoBehaviour
+public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
 {
     public Image image;
     public LineRenderer lineRenderer;
     Vector3[] linePoints;
     public RectTransform rect;
+    public UnityEvent<Node> MouseOn;
+    public UnityEvent<Node> OnClick;
 
     private void Awake()
     {
@@ -60,5 +63,15 @@ public class Node : MonoBehaviour
     {
         node.nextRoom.Add(nextNode);
         node.weights.Add(weight);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        OnClick?.Invoke(this);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        MouseOn?.Invoke(this);
     }
 }

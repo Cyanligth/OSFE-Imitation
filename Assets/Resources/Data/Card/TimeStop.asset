@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14865b9c4e002f74b9befcd394f88b42, type: 3}
+  m_Name: TimeStop
+  m_EditorClassIdentifier: 
+  rarity: 3
+  property: 2
+  icon: {fileID: 21300000, guid: 288910405102e5541a522985e5f89748, type: 3}
+  border: {fileID: 21300000, guid: 68a98ec3f845d834dbd2f0dd53a53812, type: 3}
+  propertyBackground: {fileID: 21300000, guid: cb055e7f357e49e4abfd0be095b39aac, type: 3}
+  propertyIcon: {fileID: 21300000, guid: cd1ab67da4c753449812f4cf38bf0baa, type: 3}
+  spell: TimeStop
+  damage: 0
+  useMana: 2
+  effectExplain: Za Warudo!
+  toolTip: 
+  castingTime: 0
+  afterDelay: 0
+  cardEffect: {fileID: 892751472005298750, guid: 600f572722d5d994bb5a4f73c45d770a, type: 3}

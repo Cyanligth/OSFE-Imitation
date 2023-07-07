@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14865b9c4e002f74b9befcd394f88b42, type: 3}
+  m_Name: FrostBolt
+  m_EditorClassIdentifier: 
+  rarity: 0
+  property: 0
+  icon: {fileID: 21300000, guid: aae4a3dfb072bda468195a7471ca4cd6, type: 3}
+  border: {fileID: 21300000, guid: 0d4ef06fe70ef314bba5c9a3776d983a, type: 3}
+  propertyBackground: {fileID: 21300000, guid: da2cbe0e13e31ad49910a278a2d108e0, type: 3}
+  propertyIcon: {fileID: 21300000, guid: accd087449d791e4fac36e587393509c, type: 3}
+  spell: 
+  damage: 40
+  useMana: 1
+  effectExplain: 
+  toolTip: 
+  castingTime: 0
+  afterDelay: 0
+  cardEffect: {fileID: 2956367100773386659, guid: 744a6d4ac65327a47a0f96f02cae2aad, type: 3}

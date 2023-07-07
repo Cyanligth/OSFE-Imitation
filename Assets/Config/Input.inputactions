@@ -234,7 +234,7 @@
             ]
         },
         {
-            "name": "UI",
+            "name": "Deck",
             "id": "1751309b-bfb6-42a7-8546-c64b110b4176",
             "actions": [
                 {
@@ -274,27 +274,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Chose",
-                    "type": "Button",
-                    "id": "f7c2fc1f-fde3-42aa-ab8e-73b54ccbda6c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Back",
                     "type": "Button",
                     "id": "71e98f85-36c4-4654-abfa-4c72042d78b9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Map",
-                    "type": "Button",
-                    "id": "cb3b19f1-407d-47da-9b10-adcefc1f5455",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -348,7 +330,93 @@
                 },
                 {
                     "name": "",
-                    "id": "c0accf57-f732-429c-9fa8-44c4b455e260",
+                    "id": "b4d777e6-372a-4f48-bb23-2ea501108098",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Back",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Map",
+            "id": "3b23facc-9cce-4406-a7b8-fb8b048b5800",
+            "actions": [
+                {
+                    "name": "Deck",
+                    "type": "Button",
+                    "id": "c7b54d14-9009-49c8-94f9-365f248356e8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Escape",
+                    "type": "Button",
+                    "id": "cf6a605a-32ef-427d-86f5-8ba7a7a03ccc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Chose",
+                    "type": "Button",
+                    "id": "49677091-164b-45d3-89de-00031d08acc3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Back",
+                    "type": "Button",
+                    "id": "c4667747-ba72-4e96-b5a6-11559ffc736b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Map",
+                    "type": "Button",
+                    "id": "07422541-a5af-4d54-b0f9-00e81481bb04",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "251066a9-9abf-4e2e-a0fe-a2299d8b9dc5",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Deck",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1823777b-9961-4de0-8784-6182a782edd3",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Escape",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "61c68716-964c-4536-bd36-7afc2f889392",
                     "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
@@ -359,7 +427,7 @@
                 },
                 {
                     "name": "",
-                    "id": "b4d777e6-372a-4f48-bb23-2ea501108098",
+                    "id": "941ba51c-f2f5-4a7f-b60a-f1f61c339145",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
@@ -370,12 +438,148 @@
                 },
                 {
                     "name": "",
-                    "id": "686abba8-8924-414f-8e85-3e41436fc5e1",
+                    "id": "fd7dc7c6-1754-4be8-8340-19569e6e0968",
                     "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Map",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Config",
+            "id": "d8c034a7-ce78-4e47-84fb-c8088193803c",
+            "actions": [
+                {
+                    "name": "Escape",
+                    "type": "Button",
+                    "id": "2b2a5e71-8fa6-4db0-b722-5b6cc90cad6b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Chose",
+                    "type": "Button",
+                    "id": "aff9a70c-0ab2-4a1c-bea5-cd5e05fcf127",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Back",
+                    "type": "Button",
+                    "id": "0fcab95a-e17f-4aa7-a075-8426f04f294c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ce437b1f-3e12-4499-9663-3b410bf2c7d5",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Escape",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8de1dbd5-8a57-44a2-a854-cbf8a7475065",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Chose",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8e208e3d-ba1f-4900-9d62-d3cbfedd4a78",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Back",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Title",
+            "id": "338fc154-15b2-4cf2-be34-c63475c4eb7f",
+            "actions": [
+                {
+                    "name": "Escape",
+                    "type": "Button",
+                    "id": "8ebb103f-3238-4e8c-8249-eee19808c240",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Chose",
+                    "type": "Button",
+                    "id": "3021589c-3404-44fd-b06c-f7c102cc7c64",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Back",
+                    "type": "Button",
+                    "id": "fa26a2ab-25b3-4bf2-986a-cf73ebff12db",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c5105553-7602-4ed0-8e73-60477a66536c",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Escape",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3b504854-54c4-468a-87fd-447a76aaaa31",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Chose",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "286c4d73-915e-45f3-883c-ea3c1af1434e",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Back",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

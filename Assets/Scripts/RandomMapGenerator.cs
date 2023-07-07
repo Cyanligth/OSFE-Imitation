@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Timeline;
 
 public class RandomMapGenerator : Maps
 {
@@ -13,18 +14,20 @@ public class RandomMapGenerator : Maps
     public Node curNode;
     public int[] countInt;
     public int seed;
+    EventMaster master;
 
     protected override void Awake()
     {
         base.Awake();
         lineRenderer = GetComponent<LineRenderer>();
+        master = GameManager.Resource.Load<EventMaster>("Data/EventMaster");
         countInt = new int[8];
         nodeList = new List<Node>();
     }
     private void Start()
     {
         InitMap();
-        curNode = nodeList[0];
+        master.GameStartInvoke();
     }
 
     // 시드를 외부파일에 저장 == 절대 잊으면 안됨
@@ -123,7 +126,6 @@ public class RandomMapGenerator : Maps
         RandomLink();
         PrintMap();
     }
-
     public void PrintMap()
     {
         foreach (Node node in nodeList)
@@ -143,6 +145,7 @@ public class RandomMapGenerator : Maps
                 continue;
             node.DrawLine();
         }
+        
     }
     public void ClearLine()
     {
@@ -159,6 +162,7 @@ public class RandomMapGenerator : Maps
             GameManager.Resource.Destroy(node.gameObject);
         nodeList.Clear();
         MapGenerating();
+        curNode = nodeList[0];
     }
 
     // 예정경로 바뀔때마다 원래색으로 돌리는것도 실행해주기 

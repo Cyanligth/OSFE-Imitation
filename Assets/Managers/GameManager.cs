@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public static PoolManager pool;
     public static UIManager ui;
     public static SceneManager scene;
+    public static SoundManager sound;
 
     public static GameManager Instance { get { return instance; } }
     public static DataManager Data { get { return data; } }
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     public static PoolManager Pool { get { return pool; } }
     public static UIManager UI { get { return ui; } }
     public static SceneManager Scene { get { return scene; } }
+    public static SoundManager Sound { get { return sound; } }
 
     private void Awake()
     {
@@ -56,6 +58,10 @@ public class GameManager : MonoBehaviour
         dataObj.transform.SetParent(transform);
         data = dataObj.AddComponent<DataManager>();
 
+        GameObject soundObj = new GameObject() { name = "SoundManager" };
+        soundObj.transform.SetParent(transform);
+        sound = soundObj.AddComponent<SoundManager>();
+
         GameObject playerObj = new GameObject() { name = "PlayerManager" };
         playerObj.transform.SetParent(transform);
         player = playerObj.AddComponent<PlayerManager>();
@@ -63,5 +69,6 @@ public class GameManager : MonoBehaviour
         GameObject sceneObj = new GameObject() { name = "SceneManager" };
         sceneObj.transform.SetParent(transform);
         scene = sceneObj.AddComponent<SceneManager>();
+
     }
 }

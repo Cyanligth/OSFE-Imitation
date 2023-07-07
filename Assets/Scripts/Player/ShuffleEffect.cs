@@ -28,7 +28,7 @@ public class ShuffleEffect : MonoBehaviour
             curTime += Time.deltaTime * 2.5f;
             yield return null;
         }
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         GameManager.Resource.Destroy(gameObject);
     }
 }

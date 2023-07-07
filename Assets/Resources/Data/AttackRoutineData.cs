@@ -12,11 +12,13 @@ public class AttackRoutineData : ScriptableObject
 
     public IEnumerator ProjectileAttack(int xPos, int yPos, int damage, float time, LayerMask mask, bool pierce)
     {
+        bool b;
         if (xPos < 4)
         {
             while (xPos < 7)
             {
-                if(!pierce && TargetAttack(++xPos, yPos, damage, mask))
+                TargetAttack(++xPos, yPos, damage, mask, out b);
+                if (!pierce && b)
                 {
                     IsEnded?.Invoke(GameManager.Data.map[xPos, yPos]);
                     yield break;
@@ -28,7 +30,8 @@ public class AttackRoutineData : ScriptableObject
         {
             while(xPos > 0)
             {
-                if (!pierce && TargetAttack(--xPos, yPos, damage, mask))
+                TargetAttack(--xPos, yPos, damage, mask, out b);
+                if (!pierce && b)
                 {
                     IsEnded?.Invoke(GameManager.Data.map[xPos, yPos]);
                     yield break;
@@ -161,22 +164,32 @@ public class AttackRoutineData : ScriptableObject
             }
         }
     }
-    public bool TargetAttack(int xPos, int yPos, int damage, LayerMask mask)
+    public Collider2D TargetAttack(int xPos, int yPos, int damage, LayerMask mask, out bool b )
     {
+        if(xPos > 7 || xPos < 0 || yPos < 0 || yPos > 3)
+        {
+            b = false;
+            return null;
+        }
         Collider2D[] colliders = Physics2D.OverlapBoxAll(GameManager.Data.map[xPos,yPos], TargetOverlapBox, 0, mask);
         GameManager.Data.tileList[xPos, yPos].SetTileRoutine(1, 0.2f);
         if (colliders.Length < 1)
-            return false;
+        {
+            b = false;
+            return null;
+        }
         foreach (Collider2D collider in colliders)
         {
             IHittable hittable = collider?.GetComponent<IHittable>();
             if (hittable != null)
             {
                 hittable.Hit(damage);
-                return true;
+                b = true;
+                return collider;
             }
         }
-        return false;
+        b = false;
+        return null;
     }
     public IEnumerator FieldAttack(int sXpos, int sYpos, int eXpos, int eYpos, int damage, LayerMask mask)
     {

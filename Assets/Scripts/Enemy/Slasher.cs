@@ -16,9 +16,7 @@ public class Slasher : BaseEnemy
     protected override void Start()
     {
         base.Start();
-        xPos = 7;
-        yPos = 0;
-        transform.position = new Vector3(GameManager.Data.map[xPos, yPos].x, GameManager.Data.map[xPos, yPos].y);
+        // SetStartPosition(7, 0);
     }
     protected override void Update()
     {
@@ -27,7 +25,7 @@ public class Slasher : BaseEnemy
     public void CreatAttack()
     {
         GameManager.Resource.Instantiate<SlasherShotWide>("Effect/Enemy/SlasherShotWide", attackPoint.position, attackPoint.rotation);
-        StartCoroutine(attackRoutineData.ProjectileAttack(xPos, yPos, 3, atk, 0.15f, LayerMask.GetMask("Player")));
+        StartCoroutine(attackRoutineData.ProjectileAttack(xPos, yPos, 3, atk, 0.15f, mask));
     }
     
     protected override void AttackState()
@@ -62,12 +60,16 @@ public class Slasher : BaseEnemy
     protected override void MoveState()
     {
         if (GameManager.Data.playerYPos > yPos)
-            yPos++;
+        {
+            SetPosition(xPos, yPos + 1);
+        }
         else if (GameManager.Data.playerYPos < yPos)
-            yPos--;
+        {
+            SetPosition(xPos, yPos - 1);
+        }
         else
             SetState(State.Attack);
-        StartCoroutine(MoveCorutine(transform.position, GameManager.Data.map[xPos, yPos]));
+        
         SetState(State.Idle);
     }
     protected override void DeadState()

@@ -7,10 +7,18 @@ public class PlayerStatUI : BaseUI
     protected override void Awake()
     {
         base.Awake();
+        
+    }
+    private void Start()
+    {
+        SetStat();
+    }
+    public void SetStat()
+    {
         texts["ManaRegenText"].text = GameManager.Player.ManaRegen.ToString() + " mana/s";
-        // texts["AtkDmgText"].text
-        // texts["SpellDmgText"].text
-        // texts["ShiledText"].text
-        // texts["LuckText"].text
+        texts["AtkDmgText"].text = GameManager.Player.Atk.ToString();
+        texts["SpellDmgText"].text = GameManager.Player.Matk.ToString();
+        texts["ShieldText"].text = GameManager.Player.Shield.ToString();
+        texts["LuckText"].text = GameManager.Player.Luck.ToString();
     }
 }

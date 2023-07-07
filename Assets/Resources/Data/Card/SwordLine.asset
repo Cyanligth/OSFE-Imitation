@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14865b9c4e002f74b9befcd394f88b42, type: 3}
+  m_Name: SwordLine
+  m_EditorClassIdentifier: 
+  rarity: 0
+  property: 4
+  icon: {fileID: 21300000, guid: 253ead0d3b8fe5e4e8245bc25dbb2a01, type: 3}
+  border: {fileID: 21300000, guid: 0d4ef06fe70ef314bba5c9a3776d983a, type: 3}
+  propertyBackground: {fileID: 21300000, guid: 8e78f309e6320f64e88c311e995eca6d, type: 3}
+  propertyIcon: {fileID: 21300000, guid: c07bfd00b40ce614e93837400baeab42, type: 3}
+  spell: SwordLine
+  damage: 10
+  useMana: 2
+  effectExplain: 
+  toolTip: 
+  castingTime: 0
+  afterDelay: 0
+  cardEffect: {fileID: 2705393850652727705, guid: 266f1403830b620408d67a3b101392d4, type: 3}

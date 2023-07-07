@@ -17,12 +17,18 @@ public class PopUpText : MonoBehaviour
         text.color = color;
         playerAttack = GetComponentInParent<PlayerAttack>();
         playerAttack.OnManaLow.AddListener((float f) => { ManalessPopUpText(f); });
+        playerAttack.IsSuffling.AddListener(() => { IsShfflingPopUpText(); });
     }
 
     public void ManalessPopUpText(float f)
     {
         animator.SetTrigger("Pop");
         text.text = "Need more mana!(" + string.Format("{0:0.0}", f) + ")";
+    }
+    public void IsShfflingPopUpText()
+    {
+        animator.SetTrigger("Pop");
+        text.text = "Deck is shuffling!";
     }
 
     /*

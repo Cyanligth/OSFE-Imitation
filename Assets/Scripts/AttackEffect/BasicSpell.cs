@@ -2,22 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicSpell : MonoBehaviour
+public class BasicSpell : AttackBase
 {
     [SerializeField] float t;
     [SerializeField] float speed;
-    AttackRoutineData attackData;
     Vector3 curPos;
     Coroutine coroutine;
-    private void Awake()
+    protected override void Awake()
     {
-        attackData = GameManager.Resource.Load<AttackRoutineData>("Data/AttackRoutineData");
+        base.Awake();
     }
     private void Start()
     {
         coroutine = StartCoroutine(Move());
-        attackData.IsEnded.AddListener((vector2) => { Check(vector2); });
-        StartCoroutine(attackData.ProjectileAttack(GameManager.Data.playerXPos, GameManager.Data.playerYPos, 2, 0.08f, LayerMask.GetMask("Enemy"), false));
+        atkData.IsEnded.AddListener((vector2) => { Check(vector2); });
+        StartCoroutine(atkData.ProjectileAttack(GameManager.Data.playerXPos, GameManager.Data.playerYPos, 2, 0.08f, playerAtkMask, false));
         
     }
     IEnumerator Move()
